@@ -6,6 +6,6 @@
   "module": "dist/simple-package.esm.js",
   "license": "MIT",
   "devDependencies": {
-    "@monorepo-starter/with-multi-entrypoints": "^1.0.0"
+    "@monorepo-starter/with-multi-entrypoints": "*"
   }
 }

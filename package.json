@@ -12,6 +12,12 @@
     "websites/*",
     "apps/*"
   ],
+  "scripts": {
+    "postinstall": "preconstruct dev && manypkg check",
+    "build": "preconstruct build",
+    "release": "yarn build && changeset publish",
+    "test": "jest"
+  },
   "dependencies": {
     "@changesets/cli": "^2.5.0",
     "@manypkg/cli": "^0.9.0",

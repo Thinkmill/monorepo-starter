@@ -6,7 +6,7 @@
 ## Packages set up
 
 ```
-- package/
+- packages/
     - simple-package
     - with-multi-entrypoints
 - apps/
@@ -25,3 +25,14 @@
 - jest
 - prettier(?)
 - next(?)
+- gatsby(?)
+- typescript(?)
+
+## workflows set up
+
+- install
+- dev
+  - run a node script
+- test
+- build
+- release
