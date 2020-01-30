@@ -1,0 +1,12 @@
+{
+  "name": "@monorepo-starter/test-app",
+  "version": "1.0.0",
+  "description": "This is a shell for where an app could go",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@monorepo-starter/simple-package": "^1.0.0",
+    "@monorepo-starter/with-multi-entrypoints": "^1.0.0"
+  }
+}

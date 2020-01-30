@@ -1,0 +1,10 @@
+{
+  "name": "@monorepo-starter/simple-package",
+  "version": "1.0.0",
+  "description": "A very simple package within a monorepo",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@monorepo-starter/with-multi-entrypoints": "^1.0.0"
+  }
+}

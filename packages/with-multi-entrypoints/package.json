@@ -1,0 +1,7 @@
+{
+  "name": "@monorepo-starter/with-multi-entrypoints",
+  "version": "1.0.0",
+  "description": "This is a shell for where an app could go",
+  "main": "index.js",
+  "license": "MIT"
+}
