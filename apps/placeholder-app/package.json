@@ -2,7 +2,7 @@
   "name": "@monorepo-starter/test-app",
   "version": "1.0.0",
   "description": "This is a shell for where an app could go",
-  "main": "index.js",
+  "main": "dist/test-app.cjs.js",
   "license": "MIT",
   "private": true,
   "dependencies": {

@@ -2,7 +2,8 @@
   "name": "@monorepo-starter/simple-package",
   "version": "1.0.0",
   "description": "A very simple package within a monorepo",
-  "main": "index.js",
+  "main": "dist/simple-package.cjs.js",
+  "module": "dist/simple-package.esm.js",
   "license": "MIT",
   "devDependencies": {
     "@monorepo-starter/with-multi-entrypoints": "^1.0.0"

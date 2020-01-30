@@ -2,6 +2,7 @@
   "name": "@monorepo-starter/with-multi-entrypoints",
   "version": "1.0.0",
   "description": "This is a shell for where an app could go",
-  "main": "index.js",
+  "main": "dist/with-multi-entrypoints.cjs.js",
+  "module": "dist/with-multi-entrypoints.esm.js",
   "license": "MIT"
 }

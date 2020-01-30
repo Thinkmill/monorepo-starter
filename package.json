@@ -16,5 +16,11 @@
     "@changesets/cli": "^2.5.0",
     "@manypkg/cli": "^0.9.0",
     "@preconstruct/cli": "^1.1.4"
+  },
+  "preconstruct": {
+    "packages": [
+      "packages/*",
+      "apps/*"
+    ]
   }
 }
