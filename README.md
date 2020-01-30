@@ -56,7 +56,7 @@ If you plan to use any of the following, please see the style guide for how to s
 - [gatsby](https://github.com/Thinkmill/monorepo#gatsby)
 - typescript
 
-### workflows set up
+### Workflows set up
 
 - install: run `yarn`
   - This also runs a `postinstall` hook that will validate your monorepo setup (using `manykpkg`), and set your packages up for dev (using `preconstruct`)
