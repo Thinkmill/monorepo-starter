@@ -1,6 +1,6 @@
 # Monorepo Starter
 
-> An example setup of how to do a monorepo, used in our [monorepo style guide](https://github.com/Thinkmill/monorepo).
+> An example setup of how to do a monorepo, used in our [monorepo getting started guide]()
 
 > Usable as a template from github
 
