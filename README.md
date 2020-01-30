@@ -1,13 +1,14 @@
 # Monorepo Starter
 
-> An example setup of how to do a monorepo, used in our [monorepo getting started guide]()
+> An example setup of how to do a monorepo, used in our [monorepo style guide](https://github.com/Thinkmill/monorepo).
+
 > Usable as a template from github
 
 ## Using this Starter
 
 1. Clone this repository, or click the `use this template` button on github.
 2. Delete packages you do not need, and add your own packages in the folder that makes most sense.
-3. run `yarn`
+3. Run `yarn`
 
 You are now ready to start developing within the monorepo!
 
@@ -51,8 +52,8 @@ Each of these tools has configuration specific to its usage in a monorepo which 
 
 If you plan to use any of the following, please see the style guide for how to set them up:
 
-- next
-- gatsby
+- [next.js](https://github.com/Thinkmill/monorepo#nextjs)
+- [gatsby](https://github.com/Thinkmill/monorepo#gatsby)
 - typescript
 
 ### workflows set up
