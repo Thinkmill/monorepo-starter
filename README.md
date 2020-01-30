@@ -52,8 +52,8 @@ Each of these tools have configuration specific to their usage in a monorepo, wh
 
 If you plan to use any of the following, please see the style guide for how to set them up:
 
-- Next
-- Gatsby
+- [next.js](https://github.com/Thinkmill/monorepo#nextjs)
+- [Gatsby](https://github.com/Thinkmill/monorepo#gatsby)
 - TypeScript
 
 ### Workflows set up
