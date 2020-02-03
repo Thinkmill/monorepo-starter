@@ -1,5 +1,7 @@
 # Monorepo Starter
 
+> Note - this starter is still a work in progress and some features described below have not been set up yet
+
 > An example setup of how to do a monorepo, used in our [Monorepo Getting Started Guide]()
 
 > Usable as a template from github

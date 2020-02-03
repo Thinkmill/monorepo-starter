@@ -4,8 +4,5 @@
   "description": "A very simple package within a monorepo",
   "main": "dist/simple-package.cjs.js",
   "module": "dist/simple-package.esm.js",
-  "license": "MIT",
-  "devDependencies": {
-    "@monorepo-starter/with-multi-entrypoints": "*"
-  }
+  "license": "MIT"
 }
