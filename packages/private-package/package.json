@@ -1,10 +1,10 @@
 {
-  "name": "@monorepo-starter/private-pacakge",
+  "name": "@monorepo-starter/private-package",
   "version": "1.0.0",
   "description": "A package intended for local use, not to be published to npm",
   "private": true,
-  "main": "dist/private-pacakge.cjs.js",
-  "module": "dist/private-pacakge.esm.js",
+  "main": "dist/private-package.cjs.js",
+  "module": "dist/private-package.esm.js",
   "license": "MIT",
   "devDependencies": {
     "@monorepo-starter/with-multi-entrypoints": "*"

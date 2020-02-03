@@ -1,8 +1,7 @@
 {
-  "name": "monorepo-example",
+  "name": "@monorepo-starter/root",
   "version": "1.0.0",
   "description": "An example setup of how to do a monorepo, used in our monorepo 'getting started' guide",
-  "main": "index.js",
   "repository": "git@github.com:Thinkmill/monorepo-example.git",
   "author": "Ben Conolly <ben@thinkmill.com.au>",
   "license": "MIT",

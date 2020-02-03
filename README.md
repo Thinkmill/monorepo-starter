@@ -59,10 +59,12 @@ If you plan to use any of the following, please see the style guide for how to s
 ### Workflows set up
 
 - Install: run `yarn`
+  - This uses yarn workspaces to manage installation of dependencies for all your packages.
   - This also runs a `postinstall` hook that will validate your monorepo setup (using `Manykpkg`), and set your packages up for dev (using `Preconstruct`)
 - Test: run `yarn test`, which will run Jest tests.
 - Build: run `yarn build`
-  - This uses Preconstruct to build `dist` files from the source of all packages in `/packages` and `/apps`. You will need to add your own build scripts if you need to build websites.
+  - This uses Preconstruct to build `dist` files from the source of all packages in `/packages` and `/apps`.
+  - For any build work you want done outside of Preconstruct building dists, you will need to add to this script.
 - Release: run `yarn release`
   - this will run the build command, and then run `changeset publish`
 
