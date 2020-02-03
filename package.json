@@ -16,7 +16,7 @@
     "build": "preconstruct build",
     "release": "yarn build && changeset publish",
     "test": "jest",
-    "clean": "preconstruct exec rm -rf node_modules && preconstruct exec rm -rf dist"
+    "clean": "manypkg exec rm -rf node_modules && manypkg exec rm -rf dist"
   },
   "dependencies": {
     "@changesets/cli": "^2.5.0",

@@ -69,5 +69,7 @@ If you plan to use any of the following, please see the style guide for how to s
   - For any build work you want done outside of Preconstruct building dists, you will need to add to this script.
 - Release: run `yarn release`
   - this will run the build command, and then run `changeset publish`
+- Clean: run `yarn clean`
+  - this uses `Manypkg` to remove the `node_modules` and `dist` folders from each package in the repository, as well as from the root. It can be used to 'clean out' installed/built files to ensure running `yarn` or `build` gets you fresh information.
 
 We strongly recommend using Changesets for versioning as well, here is a [base explanation of the workflow](https://github.com/atlassian/changesets/blob/master/docs/intro-to-using-changesets.md)
