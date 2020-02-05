@@ -1,0 +1,3 @@
+{
+  "main": "dist/with-multi-entrypoints.cjs.js"
+}

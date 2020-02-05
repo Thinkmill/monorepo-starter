@@ -4,5 +4,14 @@
   "description": "This is a shell for where an app could go",
   "main": "dist/with-multi-entrypoints.cjs.js",
   "module": "dist/with-multi-entrypoints.esm.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "cfonts": "^2.5.2"
+  },
+  "preconstruct": {
+    "entrypoints": [
+      "sayBi",
+      "sayChange"
+    ]
+  }
 }

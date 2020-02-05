@@ -16,6 +16,8 @@ You are now ready to start developing within the monorepo!
 
 If you are interested in how to further configure your project, or want more information on why it is set up like this, check out our [Monorepo Style Guide](https://github.com/Thinkmill/monorepo)
 
+There is als a readme in each folder, to help explain why we have placed this folder there.
+
 ## What is included in this starter
 
 ### Packages set up
@@ -29,15 +31,18 @@ We have set up three different folders to put packages, based on their needs, ea
     - private-package
 - apps/
     - placeholder-app
+- services/
+    - placeholder-service
 - websites/
-    - placeholder-website
 ```
 
 To determine where to place a new package:
 
 - If it is designed to be consumed by other packages, and not run on its own, put it in the `/packages` folder. These may be published to npm, but can also include private packages.
-- If it is a node app to be deployed, put it in the `/apps` folder
-- If it a website to be deployed, put it in the `/websites` folder
+- If it is a user-facing app or website, it should live in the `/apps` folder
+- If it is a back-end service or node app, it should live in the `/services` folder
+
+The `website/` directory should be used for a documentation website, or other repository-wide website.
 
 > We recommend deleting any of these folders that you don't intend to use in your project
 

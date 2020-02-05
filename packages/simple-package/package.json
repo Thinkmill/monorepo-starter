@@ -4,5 +4,8 @@
   "description": "A very simple package within a monorepo",
   "main": "dist/simple-package.cjs.js",
   "module": "dist/simple-package.esm.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "cfonts": "^2.5.2"
+  }
 }
