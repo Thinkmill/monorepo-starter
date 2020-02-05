@@ -29,7 +29,7 @@
   "preconstruct": {
     "packages": [
       "packages/*",
-      "apps/*"
+      "services/*"
     ]
   }
 }
