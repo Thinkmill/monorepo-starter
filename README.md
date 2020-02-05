@@ -54,7 +54,18 @@ Each of these tools have configuration specific to their usage in a monorepo, wh
 
 If you plan to use any of the following, please see the style guide for how to set them up:
 
-- [next.js](https://github.com/Thinkmill/monorepo#nextjs)
+### Quick Start Guide for some other tools
+
+<details><summary>- next.js</summary>
+
+1. Use the existing `/website` folder, or create a folder for a new website in `/apps/your-app-name`
+2. `cd` into the new directory
+3. Follow the normal Next.js setup instructions
+4. Done.
+
+We also have additional guides to [using next.js with monorepos](https://github.com/Thinkmill/monorepo#nextjs)
+
+</details>
 - [Gatsby](https://github.com/Thinkmill/monorepo#gatsby)
 - TypeScript
 
