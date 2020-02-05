@@ -4,7 +4,7 @@
 
 > An example setup of how to do a monorepo, used in our [Monorepo Getting Started Guide]()
 
-> Usable as a template from github
+> Usable as a template from github as a minimum viable monorepo setup - we configure the monorepo tooling so you can configure the rest however you want
 
 ## Using this Starter
 
