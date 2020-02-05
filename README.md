@@ -54,6 +54,16 @@ Each of these tools have configuration specific to their usage in a monorepo, wh
 
 If you plan to use any of the following, please see the style guide for how to set them up:
 
+### Installing new packages
+
+When you install new packages, you will need to determine if they are intended to be used by the monorepo as a whole, or by an individual package.
+
+If it is intended for use by the monorepo as a whole, add the package to the root `package.json` and run `yarn` to install.
+
+If it is intended for use by an individual package, add it to that's `package.json` and run `yarn` to install.
+
+Within a monorepo, all of your packages must use the same version of external packages. `yarn manypkg check` will tell you if you have any problems. `yarn manypkgs fix` will fix all problems. You can find out more about these rules in the [manypkg docs](https://github.com/thinkmill/manypkg)
+
 ### Quick Start Guide for some other tools
 
 <details><summary>- next.js</summary>
