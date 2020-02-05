@@ -59,9 +59,9 @@ If you plan to use any of the following, please see the style guide for how to s
 <details><summary>- next.js</summary>
 
 1. Use the existing `/website` folder, or create a folder for a new website in `/apps/your-app-name`
-2. `cd` into the new directory
-3. Follow the normal Next.js setup instructions
-4. Done.
+2. [Follow the normal Next.js setup instructions](https://nextjs.org/docs/getting-started)
+   - where the guide asks you to perform terminal commands (such as installing packages), run them from your app's folder, not from the repository root.
+3. Done.
 
 We also have additional guides to [using next.js with monorepos](https://github.com/Thinkmill/monorepo#nextjs)
 
