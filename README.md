@@ -56,7 +56,7 @@ If you plan to use any of the following, please see the style guide for how to s
 
 ### Quick Start Guide for some other tools
 
-<details><summary>- next.js</summary>
+<details><summary>#### next.js</summary>
 
 1. Use the existing `/website` folder, or create a folder for a new website in `/apps/your-app-name`
 2. [Follow the normal Next.js setup instructions](https://nextjs.org/docs/getting-started)
