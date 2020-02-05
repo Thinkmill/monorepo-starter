@@ -66,6 +66,7 @@ If you plan to use any of the following, please see the style guide for how to s
 We also have additional guides to [using next.js with monorepos](https://github.com/Thinkmill/monorepo#nextjs)
 
 </details>
+
 - [Gatsby](https://github.com/Thinkmill/monorepo#gatsby)
 - TypeScript
 
