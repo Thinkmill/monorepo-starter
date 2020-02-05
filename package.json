@@ -19,9 +19,12 @@
     "clean": "manypkg exec rm -rf node_modules && manypkg exec rm -rf dist && rm -rf node_modules"
   },
   "dependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
     "@changesets/cli": "^2.5.0",
     "@manypkg/cli": "^0.9.0",
-    "@preconstruct/cli": "^1.1.4"
+    "@preconstruct/cli": "^1.1.4",
+    "babel-jest": "^25.1.0"
   },
   "preconstruct": {
     "packages": [
