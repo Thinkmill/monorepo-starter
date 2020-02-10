@@ -4,7 +4,7 @@
 
 > An example setup of how to do a monorepo, used in our [Monorepo Getting Started Guide]()
 
-> Usable as a template from github
+> Usable as a template from github as a minimum viable monorepo setup - we configure the monorepo tooling so you can configure the rest however you want
 
 ## Using this Starter
 
@@ -17,6 +17,10 @@ You are now ready to start developing within the monorepo!
 If you are interested in how to further configure your project, or want more information on why it is set up like this, check out our [Monorepo Style Guide](https://github.com/Thinkmill/monorepo)
 
 There is als a readme in each folder, to help explain why we have placed this folder there.
+
+## Working in a monorepo
+
+We have a [working in monorepos](https://github.com/Thinkmill/monorepo/blob/master/working-in-a-monorepo.md) section in our style guide with advice on how to work with this monorepo.
 
 ## What is included in this starter
 
@@ -59,7 +63,29 @@ Each of these tools have configuration specific to their usage in a monorepo, wh
 
 If you plan to use any of the following, please see the style guide for how to set them up:
 
-- [next.js](https://github.com/Thinkmill/monorepo#nextjs)
+### Installing new packages
+
+When you install new packages, you will need to determine if they are intended to be used by the monorepo as a whole, or by an individual package.
+
+If it is intended for use by the monorepo as a whole, add the package to the root `package.json` and run `yarn` to install.
+
+If it is intended for use by an individual package, add it to that's `package.json` and run `yarn` to install.
+
+Within a monorepo, all of your packages must use the same version of external packages. `yarn manypkg check` will tell you if you have any problems. `yarn manypkgs fix` will fix all problems. You can find out more about these rules in the [manypkg docs](https://github.com/thinkmill/manypkg)
+
+### Quick Start Guide for some other tools
+
+<details><summary>- next.js</summary>
+
+1. Use the existing `/website` folder, or create a folder for a new website in `/apps/your-app-name`
+2. [Follow the normal Next.js setup instructions](https://nextjs.org/docs/getting-started)
+   - where the guide asks you to perform terminal commands (such as installing packages), run them from your app's folder, not from the repository root.
+3. Done.
+
+We also have additional guides to [using next.js with monorepos](https://github.com/Thinkmill/monorepo#nextjs)
+
+</details>
+
 - [Gatsby](https://github.com/Thinkmill/monorepo#gatsby)
 - TypeScript
 
