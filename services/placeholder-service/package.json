@@ -1,8 +1,8 @@
 {
-  "name": "@monorepo-starter/our-first-service",
+  "name": "@monorepo-starter/simple-service",
   "version": "1.0.0",
   "description": "This is a shell for where an app could go",
-  "main": "dist/our-first-service.cjs.js",
+  "main": "dist/simple-service.cjs.js",
   "license": "MIT",
   "private": true,
   "dependencies": {
