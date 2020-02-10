@@ -18,6 +18,10 @@ If you are interested in how to further configure your project, or want more inf
 
 There is als a readme in each folder, to help explain why we have placed this folder there.
 
+## Working in a monorepo
+
+We have a [working in monorepos](https://github.com/Thinkmill/monorepo/blob/master/working-in-a-monorepo.md) section in our style guide with advice on how to work with this monorepo.
+
 ## What is included in this starter
 
 ### Packages set up
