@@ -7,7 +7,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next -p 3001",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "cypress-ci": "cypress run"
   },
   "dependencies": {
     "next": "^9.2.1",
