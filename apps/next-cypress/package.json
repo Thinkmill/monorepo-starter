@@ -1,12 +1,13 @@
 {
-  "name": "next-cypress",
+  "name": "@monorepo-starter/next-cypress",
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next -p 3001",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "next": "^9.2.1",
@@ -14,6 +15,8 @@
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "cypress": "^4.0.1"
+    "@types/react": "^16.9.19",
+    "cypress": "^4.0.1",
+    "typescript": "^3.7.5"
   }
 }
