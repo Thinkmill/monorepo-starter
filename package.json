@@ -16,7 +16,8 @@
     "build": "preconstruct build",
     "release": "yarn build && changeset publish",
     "test": "jest",
-    "clean": "manypkg exec rm -rf node_modules && manypkg exec rm -rf dist && rm -rf node_modules"
+    "clean": "manypkg exec rm -rf node_modules && manypkg exec rm -rf dist && rm -rf node_modules",
+    "start:next-cypress": "cd apps/next-cypress && yarn start"
   },
   "dependencies": {
     "@babel/core": "^7.8.4",
