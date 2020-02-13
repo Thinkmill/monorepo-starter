@@ -1,0 +1,13 @@
+{
+  "name": "@monorepo-starter/graphql-api",
+  "version": "1.0.0",
+  "main": "dist/graphql-api.cjs.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "apollo-server": "^2.10.0",
+    "graphql": "^14.6.0",
+    "graphql-tools": "^4.0.6"
+  }
+}
