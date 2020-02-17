@@ -20,7 +20,8 @@
     "clean": "manypkg exec rm -rf node_modules && manypkg exec rm -rf dist && rm -rf node_modules",
     "start:next": "yarn workspace @monorepo-starter/next-app run dev",
     "start:server": "yarn workspace @monorepo-starter/graphql-api run start",
-    "start": "echo figure out how to start both services simultaneously here"
+    "start": "echo figure out how to start both services simultaneously here",
+    "lint": "yarn eslint ."
   },
   "dependencies": {
     "@babel/core": "^7.8.4",
@@ -30,8 +31,12 @@
     "@changesets/cli": "^2.5.0",
     "@manypkg/cli": "^0.9.0",
     "@preconstruct/cli": "^1.1.4",
+    "babel-eslint": "^10.0.3",
     "babel-jest": "^25.1.0",
-    "jest": "^25.1.0"
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1"
   },
   "preconstruct": {
     "packages": [
