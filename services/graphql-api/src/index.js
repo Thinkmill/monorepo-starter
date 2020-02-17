@@ -1,11 +1,9 @@
 import { ApolloServer, gql } from "apollo-server";
 
-import { addMockFunctionsToSchema, makeExecutableSchema } from "graphql-tools";
-
 const typeDefs = gql`
   type Query {
-    books: [Book]
-    author: [Author]
+    authors: [Author]
+    author(name: String): Author
   }
   type Book {
     title: String
@@ -18,15 +16,40 @@ const typeDefs = gql`
   }
 `;
 
-const schema = makeExecutableSchema({
-  typeDefs
-});
+const authors = [
+  { name: "Ann Leckie" },
+  { name: "N K Jemisin" },
+  { name: "Melissa Caruso" }
+];
 
-addMockFunctionsToSchema({
-  schema
-});
+const books = [
+  { title: "Ancillary Justice", author: "Ann Leckie" },
+  { title: "The Raven Tower", author: "Ann Leckie" },
+  { author: "Melissa Caruso", title: "The Tethered Mage" },
+  { author: "N K Jemisin", title: "The Fifth Season" },
+  { author: "N K Jemisin", title: "The City We Became" }
+];
 
-const server = new ApolloServer({ schema });
+const resolvers = {
+  Query: {
+    authors() {
+      return authors;
+    },
+    author(_, { name }) {
+      return authors.find(author => author.name === name);
+    }
+  },
+  Author: {
+    books(author) {
+      return books.filter(book => book.author === author.name);
+    }
+  }
+};
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers
+});
 
 server.listen().then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
