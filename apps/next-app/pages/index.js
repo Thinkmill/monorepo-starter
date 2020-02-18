@@ -1,11 +1,11 @@
 import React from "react";
 import Button from "@monorepo-starter/button";
-import { useLazyQuery } from "@apollo/react-hooks";
+import { useLazyQuery, useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
-const query = gql`
-  query {
-    author(name: "N K Jemisin") {
+const getAuthorDetails = gql`
+  query($name: String) {
+    author(name: $name) {
       name
       books {
         title
@@ -14,8 +14,33 @@ const query = gql`
   }
 `;
 
+const getAuthors = gql`
+  query {
+    authors {
+      name
+    }
+  }
+`;
+
+const Preamble = () => (
+  <>
+    <h1>Welcome to Our monorepo starter!</h1>
+    <p>
+      This is a simple project, with three packages, an app (this!), a graphql
+      server, and a button component.
+    </p>
+  </>
+);
+
 function HomePage() {
-  const [getAuthor, { loading, error, data }] = useLazyQuery(query);
+  const { data: authorList, initialLoading, initialError } = useQuery(
+    getAuthors
+  );
+  const [getAuthor, { loading, error, data }] = useLazyQuery(getAuthorDetails);
+
+  if (!authorList) {
+    return null;
+  }
 
   return (
     <div
@@ -23,18 +48,36 @@ function HomePage() {
         textAlign: "center"
       }}
     >
-      <h1>Welcome to Our monorepo starter!</h1>
+      <Preamble />
       <h2>
-        If you've got the graphql app running, click the button bellow to fetch
-        some cool books
+        As a treat, we've got some cool author recs Click on an author to see
+        some of their books:
       </h2>
-      <Button onClick={getAuthor}>Get some cool book recs</Button>
+      <div>
+        {authorList.authors.map(({ name }) => (
+          <Button
+            key={name}
+            isSelected={data && data.author.name === name}
+            onClick={() => {
+              getAuthor({ variables: { name } });
+            }}
+          >
+            {name}
+          </Button>
+        ))}
+      </div>
       <div style={{ marginTop: "24px" }}>
-        {data
-          ? `You should totally read ${data.author.books
-              .map(({ title }) => title)
-              .join(", and ")} by ${data.author.name}`
-          : null}
+        {data ? (
+          <div>
+            <ul>
+              {data.author.books.map(({ title }) => (
+                <li style={{ listStyle: "none" }} key={title}>
+                  {title}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </div>
     </div>
   );

@@ -2,15 +2,18 @@
 
 > Note - this starter is still a work in progress and some features described below have not been set up yet
 
-> An example setup of how to do a monorepo, used in our [Monorepo Getting Started Guide]()
+> An example setup of how to do a monorepo, used in our [Monorepo Getting Started Guide](https://github.com/Thinkmill/monorepo/blob/master/GETTING_STARTED.md)
 
-> Usable as a template from github as a minimum viable monorepo setup - we configure the monorepo tooling so you can configure the rest however you want
+> Usable as a template from github as a fully setup monorepo - we configure the monorepo tooling so you can configure the rest however you want
 
 ## Using this Starter
 
 1. Clone this repository, or click the `use this template` button on Github.
 2. Delete packages you do not need, and add your own packages in the folder that makes most sense.
 3. Run `yarn`
+4. Start the server using `yarn start:server`
+5. Start the website using `yarn start:next`
+6. Visit `http://localhost:3000/` to see it running 😎
 
 You are now ready to start developing within the monorepo!
 
@@ -26,17 +29,15 @@ We have a [working in monorepos](https://github.com/Thinkmill/monorepo/blob/mast
 
 ### Packages set up
 
-We have set up three different folders to put packages, based on their needs, each of which can include new packages. Here is the base structure:
+We have set up three different folders to put packages, based on their needs, each of which can include new packages. Here is what you have to start:
 
 ```
 - packages/
-    - simple-package
-    - with-multi-entrypoints
-    - private-package
+    - button
 - apps/
-    - placeholder-app
+    - next-app
 - services/
-    - placeholder-service
+    - graphql-api
 - websites/
 ```
 
@@ -50,7 +51,7 @@ The `website/` directory should be used for a documentation website, or other re
 
 > We recommend deleting any of these folders that you don't intend to use in your project
 
-### Tools set up
+### Tools we set up
 
 - [Yarn Workspaces](https://legacy.yarnpkg.com/en/docs/workspaces/)
 - [Preconstruct](https://preconstruct.tools/)
@@ -58,6 +59,7 @@ The `website/` directory should be used for a documentation website, or other re
 - [Changesets](https://github.com/changesets/changesets)
 - [Babel](https://babeljs.io/)
 - [Jest](https://jestjs.io/)
+- [Eslint](https://eslint.org/) (but there are no rules yet)
 
 Each of these tools have configuration specific to their usage in a monorepo, which has been configured for you. See our [style guide](https://github.com/Thinkmill/monorepo) for more information on the configuration for each tool.
 
