@@ -30,15 +30,13 @@
     "@preconstruct/cli": "^1.1.4",
     "babel-jest": "^25.1.0",
     "get-workspaces": "^0.6.0",
-    "spawndamnit": "^2.0.0"
+    "spawndamnit": "^2.0.0",
+    "start-server-and-test": "^1.10.8"
   },
   "preconstruct": {
     "packages": [
       "packages/*",
       "services/*"
     ]
-  },
-  "devDependencies": {
-    "start-server-and-test": "^1.10.8"
   }
 }
