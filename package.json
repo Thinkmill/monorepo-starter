@@ -19,7 +19,8 @@
     "clean": "manypkg exec rm -rf node_modules && manypkg exec rm -rf dist && rm -rf node_modules",
     "start:next-cypress": "cd apps/next-cypress && yarn start",
     "start:cypress": "cd apps/next-cypress && yarn cypress",
-    "start:cypress-ci": "cd apps/next-cypress && yarn cypress-ci"
+    "start:cypress-ci": "cd apps/next-cypress && yarn cypress-ci",
+    "start": "start-server-and-test start:next-cypress http://localhost:3001 start:cypress"
   },
   "dependencies": {
     "@babel/core": "^7.8.4",
@@ -27,12 +28,17 @@
     "@changesets/cli": "^2.5.0",
     "@manypkg/cli": "^0.9.0",
     "@preconstruct/cli": "^1.1.4",
-    "babel-jest": "^25.1.0"
+    "babel-jest": "^25.1.0",
+    "get-workspaces": "^0.6.0",
+    "spawndamnit": "^2.0.0"
   },
   "preconstruct": {
     "packages": [
       "packages/*",
       "services/*"
     ]
+  },
+  "devDependencies": {
+    "start-server-and-test": "^1.10.8"
   }
 }
