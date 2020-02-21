@@ -1,6 +1,0 @@
-{
-  "main": "dist/with-multi-entrypoints.cjs.js",
-  "preconstruct": {
-    "source": "../src/sayBi"
-  }
-}
