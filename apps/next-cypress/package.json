@@ -8,12 +8,14 @@
     "build": "next build",
     "start": "next -p 3001",
     "cypress": "cypress open",
-    "cypress-ci": "cypress run"
+    "cypress-ci": "cypress run",
+    "ci": "start-server-and-test start http://localhost:3001 cypress"
   },
   "dependencies": {
     "next": "^9.2.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "start-server-and-test": "^1.10.8"
   },
   "devDependencies": {
     "@types/react": "^16.9.19",
