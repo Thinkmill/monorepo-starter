@@ -1,0 +1,25 @@
+{
+  "name": "@monorepo-starter/next-cypress",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next -p 3001",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:ci": "start-server-and-test start http://localhost:3001 cypress:run"
+  },
+  "dependencies": {
+    "next": "^9.2.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "start-server-and-test": "^1.10.8"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.19",
+    "cypress": "^4.0.1",
+    "typescript": "^3.7.5"
+  }
+}
