@@ -89,7 +89,7 @@ We also have additional guides to [using next.js with monorepos](https://github.
 </details>
 
 - [Gatsby](https://github.com/Thinkmill/monorepo#gatsby)
-  <details open><summary>- TypeScript</summary>
+  <details><summary>- TypeScript</summary>
 
 TypeScript configuration in monorepos works best with common `tsconfig` configurations. Reference [Configuration inheritance with `extends`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#configuration-inheritance-with-extends)
 
