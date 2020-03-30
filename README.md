@@ -89,7 +89,50 @@ We also have additional guides to [using next.js with monorepos](https://github.
 </details>
 
 - [Gatsby](https://github.com/Thinkmill/monorepo#gatsby)
-- TypeScript
+  <details><summary>- TypeScript</summary>
+
+TypeScript configuration in monorepos works best with common `tsconfig` configurations. Reference [Configuration inheritance with `extends`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#configuration-inheritance-with-extends)
+
+1. Create a base `tsconfig.base.json` file in the project root.
+
+   ```json
+   {
+     "compilerOptions": {
+       "module": "esnext",
+       "target": "es5",
+       "moduleResolution": "node",
+       "esModuleInterop": true,
+       "lib": ["dom", "esnext"],
+       "importHelpers": true,
+       "rootDir": "./",
+       "sourceMap": true,
+       "declaration": true,
+       "baseUrl": "./"
+     }
+   }
+   ```
+
+2. Create a base React `tsconfig.react.json` in the project root to add custom React settings.
+
+   ```json
+   {
+     "extends": "./tsconfig.base.json",
+     "compilerOptions": {
+       "jsx": "react"
+     }
+   }
+   ```
+
+3. Then in your React components in your packages (eg. `./packages/button/`), add your `tsconfig.json` to extend your base `tsconfig.react.json`.
+
+   ```json
+   {
+     "extends": "../../tsconfig.react.json",
+     "include": ["src"]
+   }
+   ```
+
+</details>
 
 ### Workflows set up
 
