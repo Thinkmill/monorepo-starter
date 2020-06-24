@@ -77,7 +77,7 @@ Within a monorepo, all of your packages must use the same version of external pa
 
 ### Quick Start Guide for some other tools
 
-<details><summary>- next.js</summary>
+<details><summary>Next.js</summary>
 
 1. Use the existing `/website` folder, or create a folder for a new website in `/apps/your-app-name`
 2. [Follow the normal Next.js setup instructions](https://nextjs.org/docs/getting-started)
@@ -88,8 +88,13 @@ We also have additional guides to [using next.js with monorepos](https://github.
 
 </details>
 
-- [Gatsby](https://github.com/Thinkmill/monorepo#gatsby)
-  <details><summary>- TypeScript</summary>
+<details><summary>Gatsby</summary>
+
+See the [guide to using Gatsby with monorepos](https://github.com/Thinkmill/monorepo#gatsby)
+    
+</details>
+
+<details><summary>TypeScript</summary>
 
 TypeScript configuration in monorepos works best with common `tsconfig` configurations. Reference [Configuration inheritance with `extends`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#configuration-inheritance-with-extends)
 
