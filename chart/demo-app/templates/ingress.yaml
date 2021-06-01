@@ -1,0 +1,64 @@
+{{- $fullName := include "collective-ams.fullname" . -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "{{ $fullName }}-backend"
+  labels:
+    {{- include "collective-ams.labels" . | nindent 4 }}
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: {{ .Values.clusterIssuer }}
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+    - hosts:
+        - {{ .Values.backend.hostname }} 
+      secretName: {{ .Values.backend.hostname | replace "." "-"}}-secret
+  rules:
+    - host: {{ .Values.backend.hostname }} 
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: "{{ $fullName }}-backend"
+                port: 
+                  number: 3000
+---
+{{- range .Values.apps }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "{{ $fullName }}-{{ .name }}"
+  labels:
+    {{- include "collective-ams.labels" $ | nindent 4 }}
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: {{ $.Values.clusterIssuer }}
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+    - hosts:
+        - {{ .hostname }} 
+      secretName: {{ .hostname | replace "." "-"}}-secret
+  rules:
+    - host: {{ .hostname }} 
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $fullName }}-{{ .name }}
+                port: 
+                  number: 3000
+          - path: /api/graphql
+            pathType: Exact
+            backend:
+              service:
+                name: {{ $fullName }}-backend
+                port: 
+                  number: 3000
+---
+{{- end }}

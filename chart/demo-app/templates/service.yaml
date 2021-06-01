@@ -1,0 +1,37 @@
+{{- $relname := .Release.Name -}}
+{{- with .Values.backend }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "collective-ams.fullname" $ }}-backend
+  labels:
+    {{- include "collective-ams.labels" $ | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "collective-ams.selectorLabels" . | nindent 4 }}
+---
+{{- end }}
+{{- range .Values.apps }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "collective-ams.fullname" $ }}-{{ .name }}
+  labels:
+    {{- include "collective-ams.labels" $ | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "collective-ams.selectorLabels" . | nindent 4 }}
+---
+{{- end }}
