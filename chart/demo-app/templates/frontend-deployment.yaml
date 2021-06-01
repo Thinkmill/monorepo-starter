@@ -1,0 +1,45 @@
+{{- range .Values.apps }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "collective-ams.fullname" $ }}-{{ .name }}
+  labels:
+    {{- include "collective-ams.labels" $ | nindent 4 }}
+spec:
+  replicas: {{ .replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "collective-ams.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "collective-ams.selectorLabels" . | nindent 8 }}
+    spec:
+      imagePullSecrets:
+        - name: {{ $.Values.imagePullSecret }}
+      serviceAccountName: {{ include "collective-ams.serviceAccountName" $ }}
+      containers:
+        - name: {{ $.Chart.Name }}-{{ .name }}
+          image: "{{ $.Values.repository }}/{{ .image.name }}:{{ .image.tag }}"
+          env: 
+          - name: STRIPE_KEY
+            value: {{ $.Values.stripeKey }}
+          - name: BACKEND
+            value: {{ $.Values.backendUrl }}
+          - name: NODE_ENV
+            value: {{ $.Values.NODE_ENV }}
+          imagePullPolicy: {{ .image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+---
+{{- end }}
