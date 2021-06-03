@@ -3,7 +3,7 @@
 repository: opensaasreg.azurecr.io
 clusterIssuer: dns-solver
 backendUrl: https://core-test.opensaas.com.au/api/graphql
-stripeKey: pk_test_51IMozaCrhE5hs3QhNyzphQVabx8oiX0ekH7WrmR7jTfkCTcvqfw5t8YSOaej6GAbqR2lo51kRrOQl2oakBgLpCNK00myMT8pPh
+stripeKey: pk_test_TEST_KEY
 imagePullSecret: opensaasregsecret
 nameOverride: ""
 fullnameOverride: ""
