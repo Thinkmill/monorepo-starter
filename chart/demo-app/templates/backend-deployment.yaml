@@ -23,10 +23,26 @@ spec:
         - name: {{ $.Chart.Name }}-backend
           image: "{{ $.Values.repository }}/{{ .image.name }}:{{ .image.tag }}"
           env: 
-           {{- range $key, $val := .env }}
-          - name: {{ $key }}
-            value: {{ $val | quote }}
-          {{- end }}
+          - name: UNIFI_BASEURL
+            value: {{ .env.UNIFI_BASEURL }}
+          - name: UNIFI_USER
+            value: {{ .env.UNIFI_USER }}
+          - name: UNIFI_PASSWORD
+            value: {{ .env.UNIFI_PASSWORD }}
+          - name: UNIFI_FRONTEND
+            value: {{ .env.UNIFI_FRONTEND }}
+          - name: FRIENDS_FRONTEND
+            value: {{ .env.FRIENDS_FRONTEND }}
+          - name: TICKET_FRONTEND
+            value: {{ .env.TICKET_FRONTEND }}
+          - name: DATABASE_ADAPTER
+            value: {{ .env.DATABASE_ADAPTER | default "prisma_postgresql" }} 
+          - name: DATABASE_URL
+            value: {{ .env.DATABASE_URL }}
+          - name: SESSION_SECRET
+            value: {{ .env.SESSION_SECRET }}
+          - name: STRIPE_SECRET
+            value: {{ .env.STRIPE_SECRET }}
           imagePullPolicy: {{ .image.pullPolicy }}
           ports:
             - name: http
