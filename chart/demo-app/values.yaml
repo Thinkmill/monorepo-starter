@@ -1,0 +1,50 @@
+
+
+repository: opensaasreg.azurecr.io
+clusterIssuer: dns-solver
+backendUrl: https://core-test.opensaas.com.au/api/graphql
+stripeKey: pk_test_TEST_KEY
+imagePullSecret: opensaasregsecret
+nameOverride: ""
+fullnameOverride: ""
+
+backend:
+    name: backend
+    replicaCount: 1
+    hostname: core-test.opensaas.org.au
+    containerPort: 3000
+    env:
+        UNIFI_BASEURL: https://unifi.opensaas.com.au:8443
+        UNIFI_USER: test
+        UNIFI_PASSWORD: test
+        UNIFI_FRONTEND: https://wifi-test.opensaas.org.au
+        FRIENDS_FRONTEND: https://friends-test.opensaas.org.au
+        TICKET_FRONTEND: https://ticket-test.opensaas.org.au
+        DATABASE_ADAPTER: prisma_postgresql
+        DATABASE_URL: postgres://somename:1234@postgres/dbname
+        SESSION_SECRET: SOME_SECURE_STRING
+        STRIPE_SECRET: sk_test_1234
+    image:
+        name: opensaas-backend
+        pullPolicy: IfNotPresent
+        # Overrides the image tag whose default is the chart appVersion.
+        tag: ""
+apps:
+    - name: next-app
+      hostname: next-app.opensaas.org.au
+      replicaCount: 1
+      image:
+        name: next-app
+        pullPolicy: IfNotPresent
+        tag: ""
+    - name: next-cypress
+      replicaCount: 1
+      hostname: next-cypress.opensaas.org.au
+      image:
+        name: next-cypress
+        pullPolicy: IfNotPresent
+        tag: ""
+   
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
