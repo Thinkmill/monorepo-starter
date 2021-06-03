@@ -15,11 +15,13 @@
   "scripts": {
     "postinstall": "preconstruct dev && manypkg check",
     "build": "preconstruct build",
+    "build:backend": "manypkg run backend build",
+    "dev:backend": "manypkg run backend dev",
     "release": "yarn build && changeset publish",
     "test": "jest",
     "clean": "manypkg exec rm -rf node_modules && manypkg exec rm -rf dist && rm -rf node_modules",
     "start:next": "yarn manypkg run next-app start",
-    "start:server": "yarn manypkg run graphql-api start",
+    "start:backend": "manypkg run backend start",
     "start": "echo figure out how to start both services simultaneously here",
     "lint": "yarn eslint ."
   },
