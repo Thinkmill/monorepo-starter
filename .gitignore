@@ -1,15 +1,17 @@
+# Next.js build dir
+.next
+
+# Keystone build dir
+.keystone
+*.log
+
+
 # Logs
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-lerna-debug.log*
-
-# Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
-
-scratchings.js
 
 # Runtime data
 pids
@@ -22,12 +24,11 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
-*.lcov
 
 # nyc test coverage
 .nyc_output
 
-# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
 # Bower dependency directory (https://bower.io/)
@@ -36,30 +37,21 @@ bower_components
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (https://nodejs.org/api/addons.html)
+# Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
 # Dependency directories
 node_modules/
 jspm_packages/
 
-# TypeScript v1 declaration files
+# Typescript v1 declaration files
 typings/
-
-# TypeScript cache
-*.tsbuildinfo
 
 # Optional npm cache directory
 .npm
 
 # Optional eslint cache
 .eslintcache
-
-# Microbundle cache
-.rpt2_cache/
-.rts2_cache_cjs/
-.rts2_cache_es/
-.rts2_cache_umd/
 
 # Optional REPL history
 .node_repl_history
@@ -72,35 +64,69 @@ typings/
 
 # dotenv environment variables file
 .env
-.env.test
 
-# parcel-bundler cache (https://parceljs.org/)
-.cache
+# ESlint reports
+reports/
 
-# Next.js build output
-.next
+# jest_ci output
+junit.xml
 
-# Nuxt.js build / generate output
-.nuxt
-dist
+# OS
+.DS_Store
+.idea
 
-# Gatsby files
-.cache/
-# Comment in the public line in if your project uses Gatsby and *not* Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
-# public
+# Editor
+*.sublime-project
+*.sublime-workspace
 
-# vuepress build output
-.vuepress/dist
 
-# Serverless directories
-.serverless/
+# Cypress
+cypress/screenshots
+cypress/videos
+cypress/mock
 
-# FuseBox cache
-.fusebox/
 
-# DynamoDB Local files
-.dynamodb/
+dist/
 
-# TernJS port file
-.tern-port
+# Used by the image field type tests as a storage target
+tmp_test_images/
+
+# Created by https://www.gitignore.io/api/vim
+# Edit at https://www.gitignore.io/?templates=vim
+
+### Vim ###
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
+
+# End of https://www.gitignore.io/api/vim
+
+projects/
+temp/
+
+.api-test-prisma-clients
+
+# SQLite databases
+*.db
+
+# These are here temporarily until the examples properly use the new CLI
+# This should be removed and these files should be committed
+examples/*/schema.graphql
+examples/*/schema.prisma
+
+.env.*local
