@@ -5,7 +5,7 @@ import {
 } from '@keystone-next/keystone/session';
 import { createAuth } from '@keystone-next/auth';
 
-import { lists } from './schema';
+import { lists } from './schemas';
 
 let sessionSecret = process.env.SESSION_SECRET;
 

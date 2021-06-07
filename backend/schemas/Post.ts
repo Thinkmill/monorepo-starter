@@ -1,28 +1,8 @@
-import { createSchema, list } from '@keystone-next/keystone/schema';
-import {
-  text,
-  relationship,
-  password,
-  timestamp,
-  select,
-} from '@keystone-next/fields';
+import { list } from '@keystone-next/keystone/schema';
+import { text, relationship, select, timestamp } from '@keystone-next/fields';
 import { document } from '@keystone-next/fields-document';
 
-export const lists = createSchema({
-  User: list({
-    ui: {
-      listView: {
-        initialColumns: ['name', 'posts'],
-      },
-    },
-    fields: {
-      name: text({ isRequired: true }),
-      email: text({ isRequired: true, isUnique: true }),
-      password: password(),
-      posts: relationship({ ref: 'Post.author', many: true }),
-    },
-  }),
-  Post: list({
+export const Post = list({
     fields: {
       title: text(),
       status: select({
@@ -70,17 +50,4 @@ export const lists = createSchema({
         many: true,
       }),
     },
-  }),
-  Tag: list({
-    ui: {
-      isHidden: true,
-    },
-    fields: {
-      name: text(),
-      posts: relationship({
-        ref: 'Post.tags',
-        many: true,
-      }),
-    },
-  }),
-});
+  });
