@@ -1,3 +1,5 @@
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/OpenSaasAU/monorepo-starter)
+
 # Monorepo Starter
 
 > Note - this starter is still a work in progress and some features described below have not been set up yet
@@ -11,7 +13,7 @@
 1. Clone this repository, or click the `use this template` button on Github.
 2. Delete packages you do not need, and add your own packages in the folder that makes most sense.
 3. Run `yarn`
-4. Start the server using `yarn start:server`
+4. Start the server using `yarn start:backend`
 5. Start the website using `yarn start:next`
 6. Visit `http://localhost:3000/` to see it running 😎
 
