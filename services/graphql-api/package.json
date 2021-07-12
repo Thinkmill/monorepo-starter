@@ -6,7 +6,7 @@
     "start": "node ."
   },
   "dependencies": {
-    "@babel/runtime": "^7.12.5",
+    "@babel/runtime": "^7.14.0",
     "apollo-server": "^2.10.0",
     "graphql": "^15.4.0",
     "graphql-tools": "^4.0.6"

@@ -10,7 +10,8 @@
     "packages/*",
     "services/*",
     "apps/*",
-    "website"
+    "website",
+    "backend"
   ],
   "scripts": {
     "postinstall": "preconstruct dev && manypkg check",
@@ -26,8 +27,8 @@
     "lint": "yarn eslint ."
   },
   "dependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/core": "^7.14.3",
+    "@babel/plugin-transform-runtime": "^7.14.3",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "@changesets/cli": "^2.5.0",

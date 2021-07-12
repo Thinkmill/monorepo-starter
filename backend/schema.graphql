@@ -1,31 +1,54 @@
-input PostRelateToManyInput {
-  create: [PostCreateInput]
-  connect: [PostWhereUniqueInput]
-  disconnect: [PostWhereUniqueInput]
-  disconnectAll: Boolean
-}
-
-""" A keystone list """
+"""
+ A keystone list
+"""
 type User {
   id: ID!
   name: String
   email: String
-  password_is_set: Boolean
-  posts(where: PostWhereInput, search: String, sortBy: [SortPostsBy!], orderBy: String, first: Int, skip: Int): [Post!]!
-  _postsMeta(where: PostWhereInput, search: String, sortBy: [SortPostsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  password: PasswordState
+  posts(
+    where: PostWhereInput! = {}
+    search: String
+    sortBy: [SortPostsBy!]
+      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
+    orderBy: [PostOrderByInput!]! = []
+    first: Int
+    skip: Int! = 0
+  ): [Post!]
+  _postsMeta(
+    where: PostWhereInput! = {}
+    search: String
+    sortBy: [SortPostsBy!]
+      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
+    orderBy: [PostOrderByInput!]! = []
+    first: Int
+    skip: Int! = 0
+  ): _QueryMeta
+    @deprecated(
+      reason: "This query will be removed in a future version. Please use postsCount instead."
+    )
+  postsCount(where: PostWhereInput! = {}): Int
+}
+
+type PasswordState {
+  isSet: Boolean!
+}
+
+type _QueryMeta {
+  count: Int
 }
 
 input UserWhereInput {
-  AND: [UserWhereInput]
-  OR: [UserWhereInput]
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
   id: ID
   id_not: ID
   id_lt: ID
   id_lte: ID
   id_gt: ID
   id_gte: ID
-  id_in: [ID]
-  id_not_in: [ID]
+  id_in: [ID!]
+  id_not_in: [ID!]
   name: String
   name_not: String
   name_contains: String
@@ -64,18 +87,25 @@ input UserWhereInput {
   email_not_in: [String]
   password_is_set: Boolean
 
-  """ condition must be true for all nodes """
+  """
+   condition must be true for all nodes
+  """
   posts_every: PostWhereInput
 
-  """ condition must be true for at least 1 node """
+  """
+   condition must be true for at least 1 node
+  """
   posts_some: PostWhereInput
 
-  """ condition must be false for all nodes """
+  """
+   condition must be false for all nodes
+  """
   posts_none: PostWhereInput
 }
 
 input UserWhereUniqueInput {
-  id: ID!
+  id: ID
+  email: String
 }
 
 enum SortUsersBy {
@@ -85,8 +115,17 @@ enum SortUsersBy {
   name_DESC
   email_ASC
   email_DESC
-  posts_ASC
-  posts_DESC
+}
+
+input UserOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  email: OrderDirection
+}
+
+enum OrderDirection {
+  asc
+  desc
 }
 
 input UserUpdateInput {
@@ -94,6 +133,13 @@ input UserUpdateInput {
   email: String
   password: String
   posts: PostRelateToManyInput
+}
+
+input PostRelateToManyInput {
+  create: [PostCreateInput]
+  connect: [PostWhereUniqueInput]
+  disconnect: [PostWhereUniqueInput]
+  disconnectAll: Boolean
 }
 
 input UsersUpdateInput {
@@ -112,25 +158,9 @@ input UsersCreateInput {
   data: UserCreateInput
 }
 
-type Post_content_DocumentField {
-  document(hydrateRelationships: Boolean! = false): JSON!
-}
-
-input UserRelateToOneInput {
-  create: UserCreateInput
-  connect: UserWhereUniqueInput
-  disconnect: UserWhereUniqueInput
-  disconnectAll: Boolean
-}
-
-input TagRelateToManyInput {
-  create: [TagCreateInput]
-  connect: [TagWhereUniqueInput]
-  disconnect: [TagWhereUniqueInput]
-  disconnectAll: Boolean
-}
-
-""" A keystone list """
+"""
+ A keystone list
+"""
 type Post {
   id: ID!
   title: String
@@ -138,21 +168,45 @@ type Post {
   content: Post_content_DocumentField
   publishDate: String
   author: User
-  tags(where: TagWhereInput, search: String, sortBy: [SortTagsBy!], orderBy: String, first: Int, skip: Int): [Tag!]!
-  _tagsMeta(where: TagWhereInput, search: String, sortBy: [SortTagsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  tags(
+    where: TagWhereInput! = {}
+    search: String
+    sortBy: [SortTagsBy!]
+      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
+    orderBy: [TagOrderByInput!]! = []
+    first: Int
+    skip: Int! = 0
+  ): [Tag!]
+  _tagsMeta(
+    where: TagWhereInput! = {}
+    search: String
+    sortBy: [SortTagsBy!]
+      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
+    orderBy: [TagOrderByInput!]! = []
+    first: Int
+    skip: Int! = 0
+  ): _QueryMeta
+    @deprecated(
+      reason: "This query will be removed in a future version. Please use tagsCount instead."
+    )
+  tagsCount(where: TagWhereInput! = {}): Int
+}
+
+type Post_content_DocumentField {
+  document(hydrateRelationships: Boolean! = false): JSON!
 }
 
 input PostWhereInput {
-  AND: [PostWhereInput]
-  OR: [PostWhereInput]
+  AND: [PostWhereInput!]
+  OR: [PostWhereInput!]
   id: ID
   id_not: ID
   id_lt: ID
   id_lte: ID
   id_gt: ID
   id_gte: ID
-  id_in: [ID]
-  id_not_in: [ID]
+  id_in: [ID!]
+  id_not_in: [ID!]
   title: String
   title_not: String
   title_contains: String
@@ -186,18 +240,24 @@ input PostWhereInput {
   author: UserWhereInput
   author_is_null: Boolean
 
-  """ condition must be true for all nodes """
+  """
+   condition must be true for all nodes
+  """
   tags_every: TagWhereInput
 
-  """ condition must be true for at least 1 node """
+  """
+   condition must be true for at least 1 node
+  """
   tags_some: TagWhereInput
 
-  """ condition must be false for all nodes """
+  """
+   condition must be false for all nodes
+  """
   tags_none: TagWhereInput
 }
 
 input PostWhereUniqueInput {
-  id: ID!
+  id: ID
 }
 
 enum SortPostsBy {
@@ -209,10 +269,13 @@ enum SortPostsBy {
   status_DESC
   publishDate_ASC
   publishDate_DESC
-  author_ASC
-  author_DESC
-  tags_ASC
-  tags_DESC
+}
+
+input PostOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  status: OrderDirection
+  publishDate: OrderDirection
 }
 
 input PostUpdateInput {
@@ -222,6 +285,20 @@ input PostUpdateInput {
   publishDate: String
   author: UserRelateToOneInput
   tags: TagRelateToManyInput
+}
+
+input UserRelateToOneInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+  disconnect: UserWhereUniqueInput
+  disconnectAll: Boolean
+}
+
+input TagRelateToManyInput {
+  create: [TagCreateInput]
+  connect: [TagWhereUniqueInput]
+  disconnect: [TagWhereUniqueInput]
+  disconnectAll: Boolean
 }
 
 input PostsUpdateInput {
@@ -242,25 +319,47 @@ input PostsCreateInput {
   data: PostCreateInput
 }
 
-""" A keystone list """
+"""
+ A keystone list
+"""
 type Tag {
   id: ID!
   name: String
-  posts(where: PostWhereInput, search: String, sortBy: [SortPostsBy!], orderBy: String, first: Int, skip: Int): [Post!]!
-  _postsMeta(where: PostWhereInput, search: String, sortBy: [SortPostsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  posts(
+    where: PostWhereInput! = {}
+    search: String
+    sortBy: [SortPostsBy!]
+      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
+    orderBy: [PostOrderByInput!]! = []
+    first: Int
+    skip: Int! = 0
+  ): [Post!]
+  _postsMeta(
+    where: PostWhereInput! = {}
+    search: String
+    sortBy: [SortPostsBy!]
+      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
+    orderBy: [PostOrderByInput!]! = []
+    first: Int
+    skip: Int! = 0
+  ): _QueryMeta
+    @deprecated(
+      reason: "This query will be removed in a future version. Please use postsCount instead."
+    )
+  postsCount(where: PostWhereInput! = {}): Int
 }
 
 input TagWhereInput {
-  AND: [TagWhereInput]
-  OR: [TagWhereInput]
+  AND: [TagWhereInput!]
+  OR: [TagWhereInput!]
   id: ID
   id_not: ID
   id_lt: ID
   id_lte: ID
   id_gt: ID
   id_gte: ID
-  id_in: [ID]
-  id_not_in: [ID]
+  id_in: [ID!]
+  id_not_in: [ID!]
   name: String
   name_not: String
   name_contains: String
@@ -280,18 +379,24 @@ input TagWhereInput {
   name_in: [String]
   name_not_in: [String]
 
-  """ condition must be true for all nodes """
+  """
+   condition must be true for all nodes
+  """
   posts_every: PostWhereInput
 
-  """ condition must be true for at least 1 node """
+  """
+   condition must be true for at least 1 node
+  """
   posts_some: PostWhereInput
 
-  """ condition must be false for all nodes """
+  """
+   condition must be false for all nodes
+  """
   posts_none: PostWhereInput
 }
 
 input TagWhereUniqueInput {
-  id: ID!
+  id: ID
 }
 
 enum SortTagsBy {
@@ -299,8 +404,11 @@ enum SortTagsBy {
   id_DESC
   name_ASC
   name_DESC
-  posts_ASC
-  posts_DESC
+}
+
+input TagOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
 }
 
 input TagUpdateInput {
@@ -325,248 +433,116 @@ input TagsCreateInput {
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
-scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
-
-type _ListAccess {
-  """
-  Access Control settings for the currently logged in (or anonymous)
-  user when performing 'create' operations.
-  NOTE: 'create' can only return a Boolean.
-  It is not possible to specify a declarative Where clause for this
-  operation
-  """
-  create: Boolean
-
-  """
-  Access Control settings for the currently logged in (or anonymous)
-  user when performing 'read' operations.
-  """
-  read: JSON
-
-  """
-  Access Control settings for the currently logged in (or anonymous)
-  user when performing 'update' operations.
-  """
-  update: JSON
-
-  """
-  Access Control settings for the currently logged in (or anonymous)
-  user when performing 'delete' operations.
-  """
-  delete: JSON
-
-  """
-  Access Control settings for the currently logged in (or anonymous)
-  user when performing 'auth' operations.
-  """
-  auth: JSON
-}
-
-type _ListQueries {
-  """Single-item query name"""
-  item: String
-
-  """All-items query name"""
-  list: String
-
-  """List metadata query name"""
-  meta: String
-}
-
-type _ListMutations {
-  """Create mutation name"""
-  create: String
-
-  """Create many mutation name"""
-  createMany: String
-
-  """Update mutation name"""
-  update: String
-
-  """Update many mutation name"""
-  updateMany: String
-
-  """Delete mutation name"""
-  delete: String
-
-  """Delete many mutation name"""
-  deleteMany: String
-}
-
-type _ListInputTypes {
-  """Input type for matching multiple items"""
-  whereInput: String
-
-  """Input type for matching a unique item"""
-  whereUniqueInput: String
-
-  """Create mutation input type name"""
-  createInput: String
-
-  """Create many mutation input type name"""
-  createManyInput: String
-
-  """Update mutation name input"""
-  updateInput: String
-
-  """Update many mutation name input"""
-  updateManyInput: String
-}
-
-type _ListSchemaFields {
-  """The path of the field in its list"""
-  path: String
-
-  """The name of the field in its list"""
-  name: String @deprecated(reason: "Use `path` instead")
-
-  """The field type (ie, Checkbox, Text, etc)"""
-  type: String
-}
-
-type _ListSchemaRelatedFields {
-  """The typename as used in GraphQL queries"""
-  type: String
-
-  """A list of GraphQL field names"""
-  fields: [String]
-}
-
-type _ListSchema {
-  """The typename as used in GraphQL queries"""
-  type: String
-
-  """
-  Top level GraphQL query names which either return this type, or
-  provide aggregate information about this type
-  """
-  queries: _ListQueries
-
-  """Top-level GraphQL mutation names"""
-  mutations: _ListMutations
-
-  """Top-level GraphQL input types"""
-  inputTypes: _ListInputTypes
-
-  """Information about fields defined on this list"""
-  fields(where: _ListSchemaFieldsInput): [_ListSchemaFields]
-
-  """
-  Information about fields on other types which return this type, or
-  provide aggregate information about this type
-  """
-  relatedFields: [_ListSchemaRelatedFields]
-}
-
-type _ListMeta {
-  """The Keystone list key"""
-  key: String
-
-  """The Keystone List name"""
-  name: String @deprecated(reason: "Use `key` instead")
-
-  """The list's user-facing description"""
-  description: String
-
-  """The list's display name in the Admin UI"""
-  label: String
-
-  """The list's singular display name"""
-  singular: String
-
-  """The list's plural display name"""
-  plural: String
-
-  """The list's data path"""
-  path: String
-
-  """Access control configuration for the currently authenticated request"""
-  access: _ListAccess
-
-  """Information on the generated GraphQL schema"""
-  schema: _ListSchema
-}
-
-type _QueryMeta {
-  count: Int
-}
-
-input _ksListsMetaInput {
-  key: String
-
-  """Whether this is an auxiliary helper list"""
-  auxiliary: Boolean
-}
-
-input _ListSchemaFieldsInput {
-  type: String
-}
+scalar JSON
+  @specifiedBy(
+    url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf"
+  )
 
 type Mutation {
-  """ Create a single User item. """
+  """
+   Create a single User item.
+  """
   createUser(data: UserCreateInput): User
 
-  """ Create multiple User items. """
+  """
+   Create multiple User items.
+  """
   createUsers(data: [UsersCreateInput]): [User]
 
-  """ Update a single User item by ID. """
+  """
+   Update a single User item by ID.
+  """
   updateUser(id: ID!, data: UserUpdateInput): User
 
-  """ Update multiple User items by ID. """
+  """
+   Update multiple User items by ID.
+  """
   updateUsers(data: [UsersUpdateInput]): [User]
 
-  """ Delete a single User item by ID. """
+  """
+   Delete a single User item by ID.
+  """
   deleteUser(id: ID!): User
 
-  """ Delete multiple User items by ID. """
+  """
+   Delete multiple User items by ID.
+  """
   deleteUsers(ids: [ID!]): [User]
 
-  """ Create a single Post item. """
+  """
+   Create a single Post item.
+  """
   createPost(data: PostCreateInput): Post
 
-  """ Create multiple Post items. """
+  """
+   Create multiple Post items.
+  """
   createPosts(data: [PostsCreateInput]): [Post]
 
-  """ Update a single Post item by ID. """
+  """
+   Update a single Post item by ID.
+  """
   updatePost(id: ID!, data: PostUpdateInput): Post
 
-  """ Update multiple Post items by ID. """
+  """
+   Update multiple Post items by ID.
+  """
   updatePosts(data: [PostsUpdateInput]): [Post]
 
-  """ Delete a single Post item by ID. """
+  """
+   Delete a single Post item by ID.
+  """
   deletePost(id: ID!): Post
 
-  """ Delete multiple Post items by ID. """
+  """
+   Delete multiple Post items by ID.
+  """
   deletePosts(ids: [ID!]): [Post]
 
-  """ Create a single Tag item. """
+  """
+   Create a single Tag item.
+  """
   createTag(data: TagCreateInput): Tag
 
-  """ Create multiple Tag items. """
+  """
+   Create multiple Tag items.
+  """
   createTags(data: [TagsCreateInput]): [Tag]
 
-  """ Update a single Tag item by ID. """
+  """
+   Update a single Tag item by ID.
+  """
   updateTag(id: ID!, data: TagUpdateInput): Tag
 
-  """ Update multiple Tag items by ID. """
+  """
+   Update multiple Tag items by ID.
+  """
   updateTags(data: [TagsUpdateInput]): [Tag]
 
-  """ Delete a single Tag item by ID. """
+  """
+   Delete a single Tag item by ID.
+  """
   deleteTag(id: ID!): Tag
 
-  """ Delete multiple Tag items by ID. """
+  """
+   Delete multiple Tag items by ID.
+  """
   deleteTags(ids: [ID!]): [Tag]
-  authenticateUserWithPassword(email: String!, password: String!): UserAuthenticationWithPasswordResult!
-  createInitialUser(data: CreateInitialUserInput!): UserAuthenticationWithPasswordSuccess!
+  authenticateUserWithPassword(
+    email: String!
+    password: String!
+  ): UserAuthenticationWithPasswordResult!
+  createInitialUser(
+    data: CreateInitialUserInput!
+  ): UserAuthenticationWithPasswordSuccess!
   endSession: Boolean!
 }
 
-"""The `Upload` scalar type represents a file upload."""
-scalar Upload
-
 union AuthenticatedItem = User
 
-union UserAuthenticationWithPasswordResult = UserAuthenticationWithPasswordSuccess | UserAuthenticationWithPasswordFailure
+union UserAuthenticationWithPasswordResult =
+    UserAuthenticationWithPasswordSuccess
+  | UserAuthenticationWithPasswordFailure
 
 type UserAuthenticationWithPasswordSuccess {
   sessionToken: String!
@@ -593,44 +569,110 @@ input CreateInitialUserInput {
 }
 
 type Query {
-  """ Search for all User items which match the where clause. """
-  allUsers(where: UserWhereInput, search: String, sortBy: [SortUsersBy!], orderBy: String, first: Int, skip: Int): [User]
+  """
+   Search for all User items which match the where clause.
+  """
+  allUsers(
+    where: UserWhereInput! = {}
+    search: String
+    sortBy: [SortUsersBy!]
+      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
+    orderBy: [UserOrderByInput!]! = []
+    first: Int
+    skip: Int! = 0
+  ): [User!]
 
-  """ Search for the User item with the matching ID. """
+  """
+   Search for the User item with the matching ID.
+  """
   User(where: UserWhereUniqueInput!): User
 
-  """ Perform a meta-query on all User items which match the where clause. """
-  _allUsersMeta(where: UserWhereInput, search: String, sortBy: [SortUsersBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  """
+   Perform a meta-query on all User items which match the where clause.
+  """
+  _allUsersMeta(
+    where: UserWhereInput! = {}
+    search: String
+    sortBy: [SortUsersBy!]
+      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
+    orderBy: [UserOrderByInput!]! = []
+    first: Int
+    skip: Int! = 0
+  ): _QueryMeta
+    @deprecated(
+      reason: "This query will be removed in a future version. Please use usersCount instead."
+    )
+  usersCount(where: UserWhereInput! = {}): Int
 
-  """ Retrieve the meta-data for the User list. """
-  _UsersMeta: _ListMeta
+  """
+   Search for all Post items which match the where clause.
+  """
+  allPosts(
+    where: PostWhereInput! = {}
+    search: String
+    sortBy: [SortPostsBy!]
+      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
+    orderBy: [PostOrderByInput!]! = []
+    first: Int
+    skip: Int! = 0
+  ): [Post!]
 
-  """ Search for all Post items which match the where clause. """
-  allPosts(where: PostWhereInput, search: String, sortBy: [SortPostsBy!], orderBy: String, first: Int, skip: Int): [Post]
-
-  """ Search for the Post item with the matching ID. """
+  """
+   Search for the Post item with the matching ID.
+  """
   Post(where: PostWhereUniqueInput!): Post
 
-  """ Perform a meta-query on all Post items which match the where clause. """
-  _allPostsMeta(where: PostWhereInput, search: String, sortBy: [SortPostsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  """
+   Perform a meta-query on all Post items which match the where clause.
+  """
+  _allPostsMeta(
+    where: PostWhereInput! = {}
+    search: String
+    sortBy: [SortPostsBy!]
+      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
+    orderBy: [PostOrderByInput!]! = []
+    first: Int
+    skip: Int! = 0
+  ): _QueryMeta
+    @deprecated(
+      reason: "This query will be removed in a future version. Please use postsCount instead."
+    )
+  postsCount(where: PostWhereInput! = {}): Int
 
-  """ Retrieve the meta-data for the Post list. """
-  _PostsMeta: _ListMeta
+  """
+   Search for all Tag items which match the where clause.
+  """
+  allTags(
+    where: TagWhereInput! = {}
+    search: String
+    sortBy: [SortTagsBy!]
+      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
+    orderBy: [TagOrderByInput!]! = []
+    first: Int
+    skip: Int! = 0
+  ): [Tag!]
 
-  """ Search for all Tag items which match the where clause. """
-  allTags(where: TagWhereInput, search: String, sortBy: [SortTagsBy!], orderBy: String, first: Int, skip: Int): [Tag]
-
-  """ Search for the Tag item with the matching ID. """
+  """
+   Search for the Tag item with the matching ID.
+  """
   Tag(where: TagWhereUniqueInput!): Tag
 
-  """ Perform a meta-query on all Tag items which match the where clause. """
-  _allTagsMeta(where: TagWhereInput, search: String, sortBy: [SortTagsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
-
-  """ Retrieve the meta-data for the Tag list. """
-  _TagsMeta: _ListMeta
-
-  """ Retrieve the meta-data for all lists. """
-  _ksListsMeta(where: _ksListsMetaInput): [_ListMeta]
+  """
+   Perform a meta-query on all Tag items which match the where clause.
+  """
+  _allTagsMeta(
+    where: TagWhereInput! = {}
+    search: String
+    sortBy: [SortTagsBy!]
+      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
+    orderBy: [TagOrderByInput!]! = []
+    first: Int
+    skip: Int! = 0
+  ): _QueryMeta
+    @deprecated(
+      reason: "This query will be removed in a future version. Please use tagsCount instead."
+    )
+  tagsCount(where: TagWhereInput! = {}): Int
   authenticatedItem: AuthenticatedItem
   keystone: KeystoneMeta!
 }
