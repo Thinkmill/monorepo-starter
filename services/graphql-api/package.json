@@ -1,14 +1,15 @@
 {
   "name": "@monorepo-starter/graphql-api",
   "version": "1.0.0",
-  "main": "dist/graphql-api.cjs.js",
+  "main": "dist/monorepo-starter-graphql-api.cjs.js",
   "scripts": {
     "start": "node ."
   },
   "dependencies": {
-    "@babel/runtime": "^7.14.0",
+    "@babel/runtime": "^7.15.4",
     "apollo-server": "^2.10.0",
-    "graphql": "^15.4.0",
+    "graphql": "^15.6.1",
     "graphql-tools": "^4.0.6"
-  }
+  },
+  "repository": "https://github.com/OpenSaasAu/monorepo-starter/tree/master/services/graphql-api"
 }

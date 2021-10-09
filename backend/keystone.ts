@@ -1,4 +1,4 @@
-import { config } from '@keystone-next/keystone/schema';
+import { config } from '@keystone-next/keystone';
 import {
   statelessSessions
 } from '@keystone-next/keystone/session';
@@ -33,7 +33,7 @@ const auth = createAuth({
 export default auth.withAuth(
   config({
     db: {
-      adapter: 'prisma_postgresql',
+      provider: 'postgresql',
       url: process.env.DATABASE_URL || 'postgres://postgres:mysecretpassword@localhost:55000',
     },
     ui: {

@@ -1,10 +1,11 @@
 {
   "name": "@monorepo-starter/button",
   "version": "1.0.0",
-  "main": "dist/button.cjs.js",
-  "module": "dist/button.esm.js",
+  "main": "dist/monorepo-starter-button.cjs.js",
+  "module": "dist/monorepo-starter-button.esm.js",
   "dependencies": {
     "@babel/preset-typescript": "7.13.0",
     "react": "^17.0.2"
-  }
+  },
+  "repository": "https://github.com/OpenSaasAu/monorepo-starter/tree/master/packages/button"
 }

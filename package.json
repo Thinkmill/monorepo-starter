@@ -1,11 +1,11 @@
 {
   "name": "@monorepo-starter/root",
   "version": "1.0.0",
-  "description": "An example setup of how to do a monorepo, used in our monorepo 'getting started' guide",
-  "repository": "git@github.com:Thinkmill/monorepo-example.git",
-  "author": "Ben Conolly <ben@thinkmill.com.au>",
-  "license": "MIT",
   "private": true,
+  "description": "An example setup of how to do a monorepo, used in our monorepo 'getting started' guide",
+  "repository": "https://github.com/OpenSaasAu/monorepo-starter",
+  "license": "MIT",
+  "author": "Ben Conolly <ben@thinkmill.com.au>",
   "workspaces": [
     "packages/*",
     "services/*",
@@ -14,32 +14,32 @@
     "backend"
   ],
   "scripts": {
-    "postinstall": "preconstruct dev && manypkg check",
     "build": "preconstruct build",
     "build:backend": "manypkg run backend build",
-    "dev:backend": "manypkg run backend dev",
-    "release": "yarn build && changeset publish",
-    "test": "jest",
     "clean": "manypkg exec rm -rf node_modules && manypkg exec rm -rf dist && rm -rf node_modules",
-    "start:next": "yarn manypkg run next-app start",
-    "start:backend": "manypkg run backend start",
+    "dev:backend": "manypkg run backend dev",
+    "postinstall": "preconstruct dev && manypkg check",
+    "lint": "yarn eslint .",
+    "release": "yarn build && changeset publish",
     "start": "echo figure out how to start both services simultaneously here",
-    "lint": "yarn eslint ."
+    "start:backend": "manypkg run backend start",
+    "start:next": "yarn manypkg run next-app start",
+    "test": "jest"
   },
   "dependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/plugin-transform-runtime": "^7.14.3",
-    "@babel/preset-env": "^7.8.4",
-    "@babel/preset-react": "^7.8.3",
-    "@changesets/cli": "^2.5.0",
-    "@manypkg/cli": "^0.10.0",
-    "@preconstruct/cli": "^1.1.4",
-    "babel-eslint": "^10.0.3",
+    "@babel/core": "^7.15.8",
+    "@babel/eslint-parser": "^7.15.8",
+    "@babel/plugin-transform-runtime": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@changesets/cli": "^2.17.0",
+    "@manypkg/cli": "^0.18.0",
+    "@preconstruct/cli": "^2.1.5",
     "babel-jest": "^25.1.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-prettier": "^3.1.2",
+    "eslint": "^7.32.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "jest": "^25.1.0",
-    "prettier": "^1.19.1"
+    "prettier": "^2.4.1"
   },
   "preconstruct": {
     "packages": [

@@ -1,5 +1,5 @@
-import { list } from '@keystone-next/keystone/schema';
-import { text, relationship} from '@keystone-next/fields';
+import { list } from '@keystone-next/keystone';
+import { text, relationship} from '@keystone-next/keystone/fields';
 
 export const Tag = list({
     ui: {

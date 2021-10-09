@@ -1,5 +1,5 @@
-import { list } from '@keystone-next/keystone/schema';
-import { text, relationship, password } from '@keystone-next/fields';
+import { list } from '@keystone-next/keystone';
+import { text, relationship, password } from '@keystone-next/keystone/fields';
 
 export const User = list({
     ui: {
@@ -8,8 +8,8 @@ export const User = list({
       },
     },
     fields: {
-      name: text({ isRequired: true }),
-      email: text({ isRequired: true, isUnique: true }),
+      name: text({ validation: { isRequired: true }}),
+      email: text({ validation: { isRequired: true }, isIndexed: 'unique' }),
       password: password(),
       posts: relationship({ ref: 'Post.author', many: true }),
     },

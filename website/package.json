@@ -4,5 +4,6 @@
   "description": "This is a shell for where an app could go",
   "private": true,
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": "https://github.com/OpenSaasAu/monorepo-starter/tree/master/website"
 }
